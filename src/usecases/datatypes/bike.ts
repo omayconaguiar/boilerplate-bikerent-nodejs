@@ -9,4 +9,6 @@ export interface Bike {
   description: string;
   ratings: number;
   imageUrls: string[];
+  is_available?: boolean;
+  rented_untill?: Date;
 }

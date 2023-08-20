@@ -1,8 +1,10 @@
 import { Bike } from '@/usecases/datatypes/bike';
+import { BikeRent } from '@/usecases/datatypes/rent';
 import { BikeRepository } from '@/usecases/ports/bike-repository';
 
 export class InMemoryBikeRepository implements BikeRepository {
   private bikes: Bike[] = [];
+  private bikeRent: BikeRent[] = [];
   private currentId = 1;
 
   async list(candidateId: number): Promise<Bike[]> {
@@ -24,5 +26,10 @@ export class InMemoryBikeRepository implements BikeRepository {
     const newBike = { ...bike, id: this.currentId++ };
     this.bikes.push(newBike);
     return newBike;
+  }
+
+  async update(bike: BikeRent): Promise<void> {
+    const newBike = { ...bike, id: this.currentId++ };
+    this.bikeRent.push(newBike);
   }
 }

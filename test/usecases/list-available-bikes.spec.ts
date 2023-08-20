@@ -8,13 +8,10 @@ import { InMemoryUserRepository } from '@test/doubles/in-memory-user-repository'
 describe('List available bikes use case', () => {
   it('should return all available bikes', async () => {
     const candidateRepository = new InMemoryCandidateRepository();
-    
     const differentBike = new BikeBuilder().different().build();
     const bikeRepository = new InMemoryBikeRepository();
-    
     const userRepository = new InMemoryUserRepository();
     const useCase = new ListAvailableBikes(bikeRepository, candidateRepository);
-    
     const bike = new BikeBuilder().build();
     const candidate = new CandidateBuilder().withToken().withId().build();
     await candidateRepository.add(candidate);

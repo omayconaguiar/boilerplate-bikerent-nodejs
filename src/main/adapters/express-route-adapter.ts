@@ -6,6 +6,7 @@ export function adaptRoute(controller: Controller) {
     const httpRequest: HttpRequest = {
       token: req.headers.authorization,
       body: req.body,
+      params: req.params,
     };
     const httpResponse = await controller.handle(httpRequest);
     res.status(httpResponse.statusCode).json(httpResponse.body);

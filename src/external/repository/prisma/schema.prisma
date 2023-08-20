@@ -19,7 +19,8 @@ model Bike {
   ratings     Float
   imageUrls   ImageUrl[]
   candidate   Candidate  @relation(fields: [candidateId], references: [id])
-
+  is_available Boolean   @default(true)
+  rented_untill DateTime?
   @@id([id, candidateId])
 }
 
